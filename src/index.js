@@ -1,1 +1,1 @@
-console.log('Привет, Мир!')
+import './styles/style.scss'

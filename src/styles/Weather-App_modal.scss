@@ -1,5 +1,110 @@
+@import 'variables.scss';
 .main {
-    padding: 41px, 20px, 20px, 25px;
-    background: var($main-bacgraund);
+    padding: 41px 20px 20px 25px;
+    background: $main-bacgraund;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__conteiner {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+.btn {
+    &__no-backgraund {
+        display: flex;
+        align-items: center;
+        color: $white;
+        text-shadow: $text-shadow;
+        &--back {
+            &::before {
+                content: url(../icons/up.svg);
+                margin-right: 6px;
+            }
+        }
+    }
+}
+
+
+
+.title {
+    color: $white;
+    text-shadow: $text-shadow;
+}
+
+.text {
+    color: $white;
+    text-shadow: $text-shadow;
+}
+
+.conteiner-wether-row {
+    display: flex;
+    gap: 7px;
+    &__inner {
+        &::-webkit-scrollbar {
+            width: 3.42px; /* ширина скроллбара */
+            border: 1px solid $white;
+            border-radius: 10px;
+            height: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $white; /* цвет ползунка */
+            border-radius: 10px; /* скругление углов ползунка */
+        }
+        &--vertical {
+            display: flex;
+            justify-content: space-around;
+            overflow-y: auto;
+            width: 100%;
+        }
+        &--horizontal {
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 178px;
+            width: 100%;
+            padding-right: 20px;
+        }
     
+    }    
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        border-radius: 12px;
+        
+        &--horizontal {
+            flex-direction: row;
+        }
+        .text {
+            text-align: center;
+        }
+        
+        &--icon {
+            
+        }
+
+        background: $sub-bacgraund;
+        border: 1px solid $white;
+        &:not(.active) {
+            background: none;
+            border: none;
+        }
+    }
+}
+
+.text--last {
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: url(../icons/sun.svg);
+        margin-right: 10px;
+    }
 }
