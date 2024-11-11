@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,46 @@
 </head>
 
 <body>
-
-<h1 class="test">
-  Тест
-</h1>
+  <main class="main">
+    <div class="heading">
+      <a class="heading__location-btn" href="#">
+        Semarang
+      </a>
+      <a class="heading__notification-btn" href="#">
+        <img class="heading__notification" src="icons/bell-icon.svg" alt="notification">
+        <!-- <img class="heading__notification--active" src="icons/bell-icon-active.svg" alt="notification"> -->
+      </a>
+    </div>
+    <div class="weather__img-box">
+      <img src="icons/weather status/sunny.svg" alt="cloudy">
+    </div>
+    <div class="weather__descr">
+      <div class="descr__date">
+        Today, 12 September
+      </div>
+      <div class="descr__temperature">
+        29°
+      </div>
+      <div class="descr__status">
+        Cloudy
+      </div>
+      <div class="descr__info">
+        <div class="descr__info-wind">
+          Wind <span>10 km/h</span>
+        </div>
+        <div class="descr__info-hum">
+          Hum <span>54 %</span>
+        </div>
+      </div>
+    </div>
+    <div class="forecast__btn-box">
+      <button class="forecast__btn">
+        Forecast report
+      </button>
+    </div>
+  </main>
 
   <script src="./index.js"></script>
 </body>
+
 </html>

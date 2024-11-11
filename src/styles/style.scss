@@ -1,10 +1,27 @@
-@import '_variables.scss';
-@import 'Weather-App_modal.scss';
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+//vars & components
 @import 'normalize.css';
+@import '_variables.scss';
+@import './main-page/main-page.scss';
+@import 'Weather-App_modal.scss';
 
 button {
     border: none;
     background: none;
     padding: 0;
     margin: 0;
+}
+
+body{
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+}
+
+main{
+  height: 100%;
+  box-sizing: border-box;
+  padding: 41px 20px 20px 25px;
+  background: $main-bacgraund;
 }
