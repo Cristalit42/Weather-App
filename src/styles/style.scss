@@ -1,11 +1,14 @@
-//fonts
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+// Импорт SCSS файлов
+@use './variables' as variables;
+@use './main-page/main-page.scss';
+@use './Weather-App_modal.scss';
+// Импорт шрифтов
+@import url('./_fonts.css');
 
-//vars & components
-@import 'normalize.css';
-@import '_variables.scss';
-@import './main-page/main-page.scss';
-@import 'Weather-App_modal.scss';
+// Импорт CSS файлов
+@import url('./normalize.css');
+
+
 
 button {
     border: none;
@@ -16,12 +19,11 @@ button {
 
 body{
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
 }
 
 main{
   height: 100%;
   box-sizing: border-box;
   padding: 41px 20px 20px 25px;
-  background: $main-bacgraund;
+  background: variables.$main-bacgraund;
 }

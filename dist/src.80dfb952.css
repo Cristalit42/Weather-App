@@ -1,174 +1,173 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 /**
   Нормализация блочной модели
  */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
+ *,
+ ::before,
+ ::after {
+   box-sizing: border-box;
+ }
+ 
+ a {
+   text-decoration: none;
+ }
+ 
+ /**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+ :where(ul, ol):where([class]) {
+   padding-left: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+ body,
+ :where(blockquote, figure):where([class]) {
+   margin: 0;
+ }
+ 
+ /**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+ :where(
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p,
+   ul,
+   ol,
+   dl
+ ):where([class]) {
+   margin-block: 0;
+ }
+ 
+ :where(dd[class]) {
+   margin-left: 0;
+ }
+ 
+ :where(fieldset[class]) {
+   margin-left: 0;
+   padding: 0;
+   border: none;
+ }
+ 
+ /**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+ :where(ul[class]) {
+   list-style: none;
+ }
+ 
+ :where(address[class]) {
+   font-style: normal;
+ }
+ 
+ /**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+ p {
+   --paragraphMarginBottom: 24px;
+ 
+   margin-block: 0;
+ }
+ 
+ /**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+ p:where(:not([class]):not(:last-child)) {
+   margin-bottom: var(--paragraphMarginBottom);
+ }
+ 
+ 
+ /**
+   Упрощаем работу с изображениями
+  */
+ img {
+   display: block;
+   max-width: 100%;
+ }
+ 
+ /**
+   Наследуем свойства шрифт для полей ввода
+  */
+ input,
+ textarea,
+ select,
+ button {
+   font: inherit;
+ }
+ 
+ html {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   height: 100%;
+ }
+ 
+ /**
+   Плавный скролл
+  */
+ html,
+ :has(:target) {
+   scroll-behavior: smooth;
+ }
+ 
+ body {
+   /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+   min-height: 100%;
+   /**
+     Унифицированный интерлиньяж
+    */
+   line-height: 1.5;
+ }
+ 
+ /**
+   Приводим к единому цвету svg-элементы
+  */
+ svg *[fill] { fill: currentColor }
+ svg *[stroke] { stroke: currentColor }
+ 
+ /**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+ svg * {
+   transition-property: fill, stroke;
+ }
+ 
+ /**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+ @media (prefers-reduced-motion: reduce) {
+   *,
+   ::before,
+   ::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+   }
+ }
 
-a {
-  text-decoration: none;
-}
-
-/**
-  Убираем внутренние отступы слева тегам списков,
-  у которых есть атрибут class
- */
-:where(ul, ol):where([class]) {
-  padding-left: 0;
-}
-
-/**
-  Убираем внешние отступы body и двум другим тегам,
-  у которых есть атрибут class
- */
-body,
-:where(blockquote, figure):where([class]) {
-  margin: 0;
-}
-
-/**
-  Убираем внешние отступы вертикали нужным тегам,
-  у которых есть атрибут class
- */
-:where(h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-dl):where([class]) {
-  margin-block: 0;
-}
-
-:where(dd[class]) {
-  margin-left: 0;
-}
-
-:where(fieldset[class]) {
-  margin-left: 0;
-  padding: 0;
-  border: none;
-}
-
-/**
-  Убираем стандартный маркер маркированному списку,
-  у которого есть атрибут class
- */
-:where(ul[class]) {
-  list-style: none;
-}
-
-:where(address[class]) {
-  font-style: normal;
-}
-
-/**
-  Обнуляем вертикальные внешние отступы параграфа,
-  объявляем локальную переменную для внешнего отступа вниз,
-  чтобы избежать взаимодействие с более сложным селектором
- */
-p {
-  --paragraphMarginBottom: 24px;
-  margin-block: 0;
-}
-
-/**
-  Внешний отступ вниз для параграфа без атрибута class,
-  который расположен не последним среди своих соседних элементов
- */
-p:where(:not([class]):not(:last-child)) {
-  margin-bottom: var(--paragraphMarginBottom);
-}
-
-/**
-  Упрощаем работу с изображениями
- */
-img {
-  display: block;
-  max-width: 100%;
-}
-
-/**
-  Наследуем свойства шрифт для полей ввода
- */
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
-html {
-  /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-  height: 100%;
-}
-
-/**
-  Плавный скролл
- */
-html,
-:has(:target) {
-  scroll-behavior: smooth;
-}
-
-body {
-  /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-  min-height: 100%;
-  /**
-    Унифицированный интерлиньяж
-   */
-  line-height: 1.5;
-}
-
-/**
-  Приводим к единому цвету svg-элементы
- */
-svg *[fill] {
-  fill: currentColor;
-}
-
-svg *[stroke] {
-  stroke: currentColor;
-}
-
-/**
-  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
- */
-svg * {
-  transition-property: fill, stroke;
-}
-
-/**
-  Удаляем все анимации и переходы для людей,
-  которые предпочитают их не использовать
- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-.body {
-  background: red;
-}
-
+ .body {
+    background: red;
+ }
+@charset "UTF-8";
 .heading {
   display: flex;
   align-items: center;
@@ -186,7 +185,7 @@ svg * {
 }
 .heading__location-btn::before {
   content: "";
-  background-image: url("/mark-icon.0078034a.svg");
+  background-image: url("/38f9a8db15633e2de9eca22f0078034a.svg");
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
@@ -195,7 +194,7 @@ svg * {
 }
 .heading__location-btn::after {
   content: "";
-  background-image: url("/up.546d30ed.svg");
+  background-image: url("/497e84a003ce529d1ce9c63e546d30ed.svg");
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
@@ -248,7 +247,7 @@ svg * {
 }
 .descr__info-wind::before {
   content: "";
-  background-image: url("/wind-icon.c0884c30.svg");
+  background-image: url("/64902cdcf3ea3c879dff74e2c0884c30.svg");
   width: 24px;
   height: 24px;
   display: block;
@@ -267,7 +266,7 @@ svg * {
 }
 .descr__info-hum::before {
   content: "";
-  background-image: url("/humidity-icon.8a0dbe19.svg");
+  background-image: url("/2b6b7f7e8aae5a1e83f0944d8a0dbe19.svg");
   width: 24px;
   height: 24px;
   display: block;
@@ -294,7 +293,7 @@ svg * {
 }
 .forecast__btn::after {
   content: "";
-  background-image: url("/up-black.347355c2.svg");
+  background-image: url("/794b4bb30581b1ffc83722a4347355c2.svg");
   width: 24px;
   height: 24px;
   display: block;
@@ -318,7 +317,7 @@ svg * {
   text-shadow: 4px 4px 8px rgba(34, 60, 80, 0.7);
 }
 .btn__no-backgraund--back::before {
-  content: url(/up.546d30ed.svg);
+  content: url(/497e84a003ce529d1ce9c63e546d30ed.svg);
   margin-right: 6px;
 }
 
@@ -385,7 +384,7 @@ svg * {
   justify-content: center;
 }
 .text--last::before {
-  content: url(/sun.7c72d744.svg);
+  content: url(/a6fbdc8f796020a91a1ff8247c72d744.svg);
   margin-right: 10px;
 }
 
@@ -398,7 +397,6 @@ button {
 
 body {
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
 }
 
 main {
@@ -407,5 +405,4 @@ main {
   padding: 41px 20px 20px 25px;
   background: linear-gradient(to top right, #47BFDF, #4A91FF);
 }
-
-/*# sourceMappingURL=/style.ff1c4cab.css.map */
+/*# sourceMappingURL=/src.80dfb952.css.map */

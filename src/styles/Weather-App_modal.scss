@@ -1,4 +1,4 @@
-
+@use './variables' as variables;
 .nav {
     display: flex;
     justify-content: space-between;
@@ -13,8 +13,8 @@
     &__no-backgraund {
         display: flex;
         align-items: center;
-        color: $white;
-        text-shadow: $text-shadow;
+        color: variables.$white;
+        text-shadow: variables.$text-shadow;
         &--back {
             &::before {
                 content: url(../icons/up.svg);
@@ -27,13 +27,13 @@
 
 
 .title {
-    color: $white;
-    text-shadow: $text-shadow;
+    color: variables.$white;
+    text-shadow: variables.$text-shadow;
 }
 
 .text {
-    color: $white;
-    text-shadow: $text-shadow;
+    color: variables.$white;
+    text-shadow: variables.$text-shadow;
 }
 
 .conteiner-wether-row {
@@ -42,12 +42,12 @@
     &__inner {
         &::-webkit-scrollbar {
             width: 3.42px; /* ширина скроллбара */
-            border: 1px solid $white;
+            border: 1px solid variables.$white;
             border-radius: 10px;
             height: 5px;
         }
         &::-webkit-scrollbar-thumb {
-            background: $white; /* цвет ползунка */
+            background: variables.$white; /* цвет ползунка */
             border-radius: 10px; /* скругление углов ползунка */
         }
         &--vertical {
@@ -72,6 +72,8 @@
 
         border-radius: 12px;
         
+        background: variables.$sub-bacgraund;
+        border: 1px solid variables.$white;
         &--horizontal {
             flex-direction: row;
         }
@@ -83,8 +85,7 @@
             
         }
 
-        background: $sub-bacgraund;
-        border: 1px solid $white;
+     
         &:not(.active) {
             background: none;
             border: none;

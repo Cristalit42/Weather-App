@@ -1,3 +1,4 @@
+@use '../variables' as variables;
 .heading {
   display: flex;
   align-items: center;
@@ -8,8 +9,8 @@
   font-weight: 700;
   font-size: 24px;
   text-decoration: none;
-  color: $white;
-  text-shadow: $text-shadow;
+  color: variables.$white;
+  text-shadow: variables.$text-shadow;
   display: flex;
   align-items: center;
 
@@ -55,7 +56,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $white;
+  color: variables.$white;
 }
 
 .descr__date {
@@ -125,7 +126,7 @@
 
 .forecast__btn {
   padding: 18px 28px;
-  background-color: $white;
+  background-color: variables.$white;
   border-radius: 20px;
   display: flex;
   align-items: center;
